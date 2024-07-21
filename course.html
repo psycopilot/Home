@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="description"
+      content="Omnifood is an AI-powered food subscription that will make you eat healthy again, 365 days per year. It's tailored to your personal tastes and nutritional needs."
+    />
+
+    <!-- Always include this line of code!!! -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="icon" href="img/favicon.png" />
+    <link rel="apple-touch-icon" href="img/apple-touch-icon.png" />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="general.css" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="queries.css" />
+    <link rel="stylesheet" href="lessons.css" />
+    <link rel="stylesheet" href="course.css" />
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule=""
+      src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.js"
+    ></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@54,400,0,0" />
+    
+    <script
+      defer
+      src="https://unpkg.com/smoothscroll-polyfill@0.4.4/dist/smoothscroll.min.js"
+    ></script>
+    <script defer src="js/script.js"></script>
+
+    <title>Live &mdash; in Girona</title>
+    <style>
+        h1{
+            display:block;
+            text-align:center;
+            color:#f8f8f2;
+     
+        }
+   
+        .caixachat{
+            display:flex;
+            justify-content: center;
+            align-items: center;
+            margin-top:30px;
+            
+        }
+        .chat-container {
+            width: 360px;
+            height: 600px;
+            border-radius: 10px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 1px 1px 0 rgba(0,0,0,.06), 0 2px 5px 0 rgba(0,0,0,.2);
+        }
+
+        .chat-header {
+            background-color: #e751a6;
+            color: white;
+            padding: 10px;
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .chat-messages {
+            flex-grow: 1;
+            padding: 10px;
+            overflow-y: auto;
+            background-color: #e5ddd5;
+        }
+
+        .message {
+            margin-bottom: 10px;
+            padding: 8px 12px;
+            border-radius: 7.5px;
+            max-width: 70%;
+            position: relative;
+            clear: both;
+            font-size:15px;
+        }
+
+        .message::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            width: 12px;
+            height: 12px;
+        }
+
+        .received {
+            background-color: #ffffff;
+            float: left;
+        }
+
+        .received::after {
+            left: -6px;
+            background: radial-gradient(circle at 0 0, rgba(0,0,0,0) 12px, #ffffff 0);
+        }
+
+        .sent {
+            background-color: #dcf8c6;
+            float: right;
+        }
+
+        .sent::after {
+            right: -6px;
+            background: radial-gradient(circle at 100% 0, rgba(0,0,0,0) 12px, #dcf8c6 0);
+        }
+
+        .chat-input {
+            display: flex;
+            padding: 10px;
+            background-color: #f0f0f0;
+        }
+
+        .chat-input input {
+            flex-grow: 1;
+            padding: 10px;
+            border: none;
+            border-radius: 21px;
+            background-color: white;
+        }
+
+        .chat-input button {
+            width: 40px;
+            height: 40px;
+            background-color: #e751a6;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            margin-left: 10px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .chat-input button:before {
+            content: '➤';
+            font-size: 20px;
+        }
+        .correction{
+          
+          font-size:10px;
+          overflow:hidden;
+          float:right;
+          margin-bottom: 20px;
+          margin-left:90%;
+          padding:5px 10px 5px 10px;
+          border-radius: 7.5px;
+          color:white;
+          background-color: #075e54;
+        }
+        #send-button{
+
+        }
+    </style>
+    <style>
+        .material-symbols-outlined {
+          width:20%;
+          font-size:30px;
+          height:20%;
+         
+        }
+        </style>
+          <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+   
+  </head>
+  <body>
+    <header class="header">
+      <a href="#">
+        <img class="logo" alt="Omnifood logo" src="img/omnifood-logo.png" />
+      </a>
+
+      <nav class="main-nav">
+        <ul class="main-nav-list">
+          <li><a class="main-nav-link" href="#how">How it workss</a></li>
+          <li><a class="main-nav-link" href="#meals">Meals</a></li>
+          <li>
+            <a class="main-nav-link" href="#testimonials">Testimonials</a>
+          </li>
+          <li><a class="main-nav-link" href="#pricing">Pricing</a></li>
+          <li><a class="main-nav-link nav-cta" href="#cta">Try for free</a></li>
+        </ul>
+      </nav>
+
+      <button class="btn-mobile-nav">
+        <ion-icon class="icon-mobile-nav" name="menu-outline"></ion-icon>
+        <ion-icon class="icon-mobile-nav" name="close-outline"></ion-icon>
+      </button>
+    </header>
+
+    <main>
+
+
+    
+    
+     
+          
+
+
+      <section class="our_service_section" style="padding-top:50px; min-height:30vh;">
+        <h3 class="section_title">Save your thoughts and see progress</h3>
+        <p class="section_details">
+          Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+        </p>
+      
+       
+  
+      <div class="container">
+          <div class="course-list">
+              <div class="course-item">
+                  <img src="/api/placeholder/400/200" alt="Course 1">
+                  <h3>Web Development Fundamentals</h3>
+                  <p>Learn the basics of HTML, CSS, and JavaScript to kickstart your web development journey.</p>
+                  <span class="price">$49.99</span>
+                  <a href="#" class="btn">Enroll Now</a>
+              </div>
+              <div class="course-item">
+                  <img src="/api/placeholder/400/200" alt="Course 2">
+                  <h3>Advanced JavaScript</h3>
+                  <p>Master advanced JavaScript concepts and become a pro in modern web development.</p>
+                  <span class="price">$79.99</span>
+                  <a href="#" class="btn">Enroll Now</a>
+              </div>
+              <div class="course-item">
+                  <img src="/api/placeholder/400/200" alt="Course 3">
+                  <h3>Responsive Web Design</h3>
+                  <p>Create beautiful, responsive websites that look great on any device.</p>
+                  <span class="price">$59.99</span>
+                  <a href="#" class="btn">Enroll Now</a>
+              </div>
+          </div>
+      </div>
+      
+      </section>
+      <section class="course-info">
+        <h3 class="section_title" style="margin-top:3%;color:whitesmoke;">Mental health Lessons free</h3>
+        <p class="section_details" style="margin-bottom: 5%;">
+          Learn how to improve your mental health with a guided path.
+        </p>
+        <ul class="lesson-list">
+            <li class="lesson">
+                <div class="lesson-header">
+                    <h3>Lesson 1: Stress Management</h3>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="lesson-content">
+                  <div class="lesson-section">
+                    <h4>Learning Objectives:</h4>
+                    <ul>
+                        <li>Identify personal stressors and learn to manage them effectively.</li>
+                        <li>Practice mindfulness, meditation, and other relaxation techniques.</li>
+                        <li>Develop time management skills to reduce stress.</li>
+                        <li>Use positive coping mechanisms to handle stressful situations.</li>
+                    </ul>
+                </div>
+                </div>
+            </li>
+            <li class="lesson">
+                <div class="lesson-header">
+                    <h3>Lesson 2: Emotional Regulation</h3>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="lesson-content">
+                  <div class="lesson-section">
+                    <h4>Learning Objectives:</h4>
+                    <ul>
+                        <li>Recognize and label your emotions accurately.</li>
+                        <li>Develop strategies to manage and express emotions healthily</li>
+                        <li>Practice techniques like deep breathing and progressive muscle relaxation.</li>
+                        <li>Recognize the connection between gut health and mental well-being.</li>
+                    </ul>
+                </div>
+                </div>
+            </li>
+            <li class="lesson">
+                <div class="lesson-header">
+                    <h3>Lesson 3: Diet and Nutrition</h3>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="lesson-content">
+                    
+                        <div class="lesson-section">
+                            <h4>Learning Objectives:</h4>
+                            <ul>
+                                <li>Understand the impact of nutrition on mental health.</li>
+                                <li>Incorporate a variety of fruits, vegetables, whole grains, and lean proteins.</li>
+                                <li>Stay hydrated and limit caffeine and sugar intake.</li>
+                                <li>Recognize the connection between gut health and mental well-being.</li>
+                            </ul>
+                        </div>
+                       
+                    
+                      
+                </div>
+            </li>
+            <li class="lesson">
+                <div class="lesson-header">
+                    <h3>Lesson 4: Sleep Hygiene</h3>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="lesson-content">
+                  <div class="lesson-section">
+                    <h4>Learning Objectives:</h4>
+                    <ul>
+                        <li>Establish and maintain a regular sleep schedule.</li>
+                        <li>Create a relaxing bedtime routine to improve sleep quality.</li>
+                        <li>Limit exposure to screens and stimulants before bed.</li>
+                        <li>Understand the impact of sleep on overall mental health.</li>
+                    </ul>
+                </div>
+                </div>
+            </li>
+            <li class="lesson">
+                <div class="lesson-header">
+                    <h3>Lesson 5:Social Connections</h3>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="lesson-content">
+                  <div class="lesson-section">
+                    <h4>Learning Objectives:</h4>
+                    <ul>
+                        <li>Foster meaningful relationships and build a support network.</li>
+                        <li>Engage in social activities and community involvement.</li>
+                        <li>Practice effective communication and active listening skills.</li>
+                        <li>Understand the importance of giving and receiving support.</li>
+                    </ul>
+                </div>
+                </div>
+            </li>
+        </ul>
+    </section>
+      <section class="section-pricing" id="pricing">
+        <div class="container hole">
+          <span class="subheading">Pricing</span>
+          <h2 class="heading-secondary">
+            Premium features for YOU
+          </h2>
+        </div>
+
+        <div class="container grid grid--3-cols margin-bottom-md">
+          <div class="pricing-plan pricing-plan--starter">
+            <header class="plan-header">
+              <p class="plan-name">Free</p>
+              <p class="plan-price">0<span>$</span></p>
+              <p class="plan-text">For you, your family, your friends</p>
+            </header>
+            <ul class="list">
+              <li class="list-item">
+                <ion-icon class="list-icon" name="checkmark-outline"></ion-icon>
+                <span>Free language learning newsletter </span>
+              </li>
+              <li class="list-item">
+                <ion-icon class="list-icon" name="checkmark-outline"></ion-icon>
+                <span>
+                    40 dialogues for each language
+                </span>
+              </li>
+              <li class="list-item">
+                <ion-icon class="list-icon" name="checkmark-outline"></ion-icon>
+                <span></span>
+              </li>
+              <li class="list-item">
+                <ion-icon class="list-icon" name="close-outline"></ion-icon>
+              </li>
+            </ul>
+            <div class="plan-sing-up">
+              <a href="#" class="btn btn--full">Start eating well</a>
+            </div>
+          </div>
+          <div class="pricing-plan pricing-plan--starter">
+            <header class="plan-header">
+              <p class="plan-name">Starter</p>
+              <p class="plan-price">9,99<span>$</span></p>
+              <p class="plan-text">per month. Cheap price, nice learning.</p>
+            </header>
+            <ul class="list">
+              <li class="list-item">
+                <ion-icon class="list-icon" name="checkmark-outline"></ion-icon>
+                <span>Free newsletter with no ads</span>
+              </li>
+              <li class="list-item">
+                <ion-icon class="list-icon" name="checkmark-outline"></ion-icon>
+                <span>100 conversations for each language</span>
+              </li>
+              <li class="list-item">
+                <ion-icon class="list-icon" name="checkmark-outline"></ion-icon>
+                <span>No ads in the chat</span>
+              </li>
+              <li class="list-item">
+                <ion-icon class="list-icon" name="close-outline"></ion-icon>
+              </li>
+            </ul>
+            <div class="plan-sing-up">
+              <a href="#" class="btn btn--full">Start eating well</a>
+            </div>
+          </div>
+
+          <div class="pricing-plan pricing-plan--complete">
+            <header class="plan-header">
+              <p class="plan-name">Complete</p>
+              <p class="plan-price">19,99<span>$</span></p>
+              <p class="plan-text">per month. Just for real learners!</p>
+            </header>
+            <ul class="list">
+              <li class="list-item">
+                <ion-icon class="list-icon" name="checkmark-outline"></ion-icon>
+                <span><strong>Free newsletter </strong>with no ads</span>
+              </li>
+              <li class="list-item">
+                <ion-icon class="list-icon" name="checkmark-outline"></ion-icon>
+                <span>Order <strong>24/7</strong></span>
+              </li>
+              <li class="list-item">
+                <ion-icon class="list-icon" name="checkmark-outline"></ion-icon>
+                <span>Delivery is free</span>
+              </li>
+              <li class="list-item">
+                <ion-icon class="list-icon" name="checkmark-outline"></ion-icon>
+                <span>Get access to latest recipes</span>
+              </li>
+            </ul>
+            <div class="plan-sing-up">
+              <a href="#" class="btn btn--full">Start eating well</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="container grid">
+          <aside class="plan-details">
+            The premium subscriptions is not available yet.
+          </aside>
+        </div>
+
+       
+      </section>
+
+      <section class="section-cta" id="cta">
+        <div class="container" style="justify-content:   center; display:flex;">
+          <div class="cta">
+            <div class="cta-text-box">
+              <h2 class="heading-secondary">Join to know all the upgrades</h2>
+              <p class="cta-text">
+                Healthy, tasty and hassle-free meals are waiting for you. Start
+                eating well today. You can cancel or pause anytime. And the
+                first meal is on us!
+              </p>
+
+              <form class="cta-form" name="sign-up" netlify>
+                <div>
+                  <label for="full-name">Full Name</label>
+                  <input
+                    id="full-name"
+                    type="text"
+                    placeholder="Metta Surendhar"
+                    name="full-name"
+                    required
+                  />
+                </div>
+
+                <div>
+                  <label for="email">Email address</label>
+                  <input
+                    id="email"
+                    type="email"
+                    placeholder="name@example.com"
+                    name="email"
+                    required
+                  />
+                </div>
+
+                <div>
+                  <label for="select-where">Where did you hear from us?</label>
+                  <select id="select-where" name="select-where" required>
+                    <option value="">Please choose one option:</option>
+                    <option value="friends">Friends and family</option>
+                    <option value="youtube">YouTube video</option>
+                    <option value="podcast">Podcast</option>
+                    <option value="ad">Facebook ad</option>
+                    <option value="others">Others</option>
+                  </select>
+                </div>
+
+                <button class="btn btn--form">Sign up now</button>
+
+                <!-- <input type="checkbox" />
+                <input type="number" /> -->
+              </form>
+            </div>
+           
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container grid grid--footer">
+        <div class="logo-col">
+          <a href="#" class="footer-logo">
+            <img class="logo" alt="Omnifood logo" src="img/omnifood-logo.png" />
+          </a>
+
+          <ul class="social-links">
+            <li>
+              <a class="footer-link" href="#"
+                ><ion-icon class="social-icon" name="logo-instagram"></ion-icon
+              ></a>
+            </li>
+            <li>
+              <a class="footer-link" href="#"
+                ><ion-icon class="social-icon" name="logo-facebook"></ion-icon
+              ></a>
+            </li>
+            <li>
+              <a class="footer-link" href="#"
+                ><ion-icon class="social-icon" name="logo-twitter"></ion-icon
+              ></a>
+            </li>
+          </ul>
+
+          <p class="copyright">
+            Made with ❤️ by METTA SURENDHAR
+          </p>
+        </div>
+
+        <div class="address-col">
+          <p class="footer-heading">Contact us</p>
+          <address class="contacts">
+            <p class="address">
+              No 623, Ambedkar St., 4th Floor, Chennai, TamilNadu
+            </p>
+            <p>
+              <a class="footer-link" href="tel:415-201-6370">+91 52525 35353</a
+              ><br />
+              <a class="footer-link" href="mailto:hello@omnifood.com"
+                >omnifood@gmail.com</a
+              >
+            </p>
+          </address>
+        </div>
+
+        <nav class="nav-col">
+          <p class="footer-heading">Account</p>
+          <ul class="footer-nav">
+            <li><a class="footer-link" href="#">Create account</a></li>
+            <li><a class="footer-link" href="#">Sign in</a></li>
+            <li><a class="footer-link" href="#">iOS app</a></li>
+            <li><a class="footer-link" href="#">Android app</a></li>
+          </ul>
+        </nav>
+
+        <nav class="nav-col">
+          <p class="footer-heading">Company</p>
+          <ul class="footer-nav">
+            <li><a class="footer-link" href="#">About Omnifood</a></li>
+            <li><a class="footer-link" href="#">For Business</a></li>
+            <li><a class="footer-link" href="#">Cooking partners</a></li>
+            <li><a class="footer-link" href="#">Careers</a></li>
+          </ul>
+        </nav>
+
+        <nav class="nav-col">
+          <p class="footer-heading">Resources</p>
+          <ul class="footer-nav">
+            <li><a class="footer-link" href="#">Recipe directory </a></li>
+            <li><a class="footer-link" href="#">Help center</a></li>
+            <li><a class="footer-link" href="#">Privacy & terms</a></li>
+          </ul>
+        </nav>
+      </div>
+    </footer>
+    <script>
+      const chatMessages = document.getElementById('chatMessages');
+      const messageInput = document.getElementById('messageInput');
+      const sendButton = document.getElementById('sendButton');
+      //Crea la aparença del missatge, tan la resposta com el prompt
+      function addMessage(message, isSent,correct) {
+          const messageElement = document.createElement('div');
+          let corrector = document.createElement('div');
+          messageElement.classList.add('message');
+          if(correct == true){
+          corrector.classList.add('correction');
+        }
+          messageElement.classList.add(isSent ? 'sent' : 'received');
+          
+          messageElement.textContent = message;
+         
+          if(isSent==false){
+            chatMessages.appendChild(corrector);
+            console.log(isSent + "false");
+          }
+          else{
+            console.log(isSent +"true");
+          }
+          chatMessages.appendChild(messageElement);
+          chatMessages.scrollTop = chatMessages.scrollHeight;
+      }
+//Agafa el missatge escrit al input i inicia la funció de crear l'aparença del missatge
+      function sendMessage() {
+          const message = messageInput.value.trim();
+          if (message) {
+            console.log("eee");
+              addMessage(message, true);
+              messageInput.value = '';
+          }
+      }
+      function alert(){
+        const message = document.createElement('div');
+      }
+//Agafa de referència al buto i crea un onclick amb la funció de sendMEssage
+      //sendButton.addEventListener('click', sendMessage);
+
+      messageInput.addEventListener('keypress', function(event) {
+          if (event.key === 'Enter') {
+              sendMessage();
+          }
+      });
+  </script>
+  <script>
+    document.querySelectorAll('.lesson-header').forEach(header => {
+        header.addEventListener('click', function() {
+            this.parentElement.classList.toggle('active');
+            const content = this.nextElementSibling;
+            content.classList.toggle('active');
+        });
+    });
+
+    document.querySelectorAll('.complete-btn').forEach(button => {
+        button.addEventListener('click', function(e) {
+            e.stopPropagation();
+            this.textContent = this.textContent === 'Mark as Complete' ? 'Completed' : 'Mark as Complete';
+            this.style.backgroundColor = this.textContent === 'Completed' ? '#45a049' : '#4CAF50';
+        });
+    });
+</script>
+
+    <script>
+      console.log("a"+ document.getElementById('messageInput').value);
+      var countcorrect = -1;
+      document.getElementById('sendButton').addEventListener('click', async (event) => {
+         
+          var message = document.getElementById('messageInput').value;
+          
+          console.log("missatge" + message);
+          let response = await fetch('/', {
+              method: 'POST',
+              headers: {
+                  'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({ message })
+          });
+         sendMessage();
+        
+     
+          let result = await response.json();
+          addMessage("message", false,result.correct);
+          if(result.resultados == 0){
+            var aconseguit=0;
+         }
+         else if(result.resultados == 1){
+            var aconseguit=1;
+         }
+         else if(result.resultados == -1){
+           var aconseguit=-1;
+           
+         }
+         else{
+          var aconseguit ="problem";
+         }
+         console.log("aconseguit"+ aconseguit);
+          var allElements = document.querySelectorAll('.received');
+          var count = allElements.length;
+         
+         console.log(count);
+         console.log(result.correct + "correcion");
+          document.getElementsByClassName('message received')[count-1].textContent =result.reply;
+          var width = document.getElementsByClassName('message sent')[count-1].offsetWidth;
+          var height = document.getElementsByClassName('message sent')[count-1].offsetHeight;
+          if(result.correct == true){
+            countcorrect++;
+          document.getElementsByClassName('correction')[countcorrect].textContent = result.solucio;
+          document.getElementsByClassName('correction')[countcorrect].style.width = width + 'px';
+        }
+          console.log(result.replys);
+          
+        
+
+    // Aplicar el tamaño al div2
+    
+    
+      });
+  
+
+   
+  </script>
+  <script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-analytics.js";
+  import { getDatabase, set, ref } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-Database.js";
+  import { getAuth, createUserWithEmailAndPassword} from "https://www.gstatic.com/firebasejs/10.12.3/firebase-Database.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyCmNei-IApwTI3BupKyjAojRN7IzlongnQ",
+    authDomain: "mentalcopilot.firebaseapp.com",
+    projectId: "mentalcopilot",
+    storageBucket: "mentalcopilot.appspot.com",
+    messagingSenderId: "497441115147",
+    appId: "1:497441115147:web:48d4af62bfbc559392cb0e",
+    measurementId: "G-WLXN1ER8RD"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+  const db = getDatabase();
+  const auth = getAuth(app);
+
+  let EmailINp = document.getElementById('');
+  let PassINp = document.getElementById('');
+  let FnameINp = document.getElementById('');
+  
+  let RegisterUser = evt => {
+    evt.preventDefault();
+
+    creau
+  }
+
+</script>
+  </body>
+</html>

@@ -1,0 +1,95 @@
+
+header h1 {
+    margin: 0;
+    text-align: center;
+    padding-bottom: 20px;
+}
+.course-info {
+    background-color:#282a36;
+  
+    padding: 20px;
+    border-radius: 5px;
+}
+.lesson-list {
+    list-style-type: none;
+    padding: 0;
+}
+.lesson {
+    background: #feaedc;
+    margin: 10px 0;
+    border-radius: 5px;
+    overflow: hidden;
+}
+.lesson-header {
+    background: #ff79c6;
+    padding: 25px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.lesson-header h3 {
+    margin: 0;
+    font-size:25px;
+    color: #35424a;
+}
+.lesson-content {
+    padding: 0 15px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+}
+.lesson-content.active {
+    max-height: 500px;
+    padding: 15px;
+}
+.duration {
+    font-style: italic;
+    color: #666;
+}
+.complete-btn {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 10px 0;
+    cursor: pointer;
+    border-radius: 3px;
+}
+.complete-btn:hover {
+    background-color: #45a049;
+}
+.toggle-icon {
+    font-size: 20px;
+    transition: transform 0.3s ease;
+}
+.lesson.active .toggle-icon {
+    transform: rotate(180deg);
+}
+.toggle-icon {
+    font-size: 20px;
+    transition: transform 0.3s ease;
+}
+.lesson.active .toggle-icon {
+    transform: rotate(180deg);
+}
+.lesson-section {
+    margin-bottom: 15px;
+}
+.lesson-section h4 {
+    color: #2f4f4f;
+    margin-bottom: 5px;
+    font-size:21px;
+}
+.lesson-section ul {
+    margin-top: 5px;
+    line-height: 20px;
+    margin-left:30px;
+    font-size:20px;
+
+    text-decoration: none;
+}
